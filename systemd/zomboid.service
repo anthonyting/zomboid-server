@@ -1,0 +1,16 @@
+[Unit]
+Description=Project Zomboid Server
+After=network.target
+
+[Service]
+PrivateTmp=true
+Type=simple
+User=my_user_account
+WorkingDirectory=/home/my_user_account
+KillSignal=SIGCONT
+Sockets=zomboid.socket
+ExecStart=/bin/sh -c "exec /path/to/start-zomboid < /run/zomboid.control"
+ExecStop=/bin/sh -c "printf \"quit\n\" > /run/zomboid.control"
+
+[Install]
+WantedBy=multi-user.target

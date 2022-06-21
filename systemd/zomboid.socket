@@ -1,0 +1,10 @@
+[Unit]
+BindsTo=zomboid.service
+
+[Socket]
+ListenFIFO=/run/zomboid.control
+FileDescriptorName=control
+RemoveOnStop=true
+SocketMode=0660
+SocketUser=my_user_account
+SocketGroup=my_user_account
